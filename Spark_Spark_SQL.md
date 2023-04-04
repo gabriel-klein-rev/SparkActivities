@@ -32,8 +32,6 @@ df3.show()
 df1.printSchema()
 
 
-
-
 df1.select("name").show()
 
 df1.select($"age" +1).show()
@@ -41,7 +39,6 @@ df1.select($"age" +1).show()
 val df = sc.parallelize(Seq((4, "blah", 2),(2, "", 3),(56, "foo", 3),(100, null, 5))).toDF("A", "B", "C")
 
 val newDf = df.withColumn("D", when($"B".isNull or $"B" === "", 0).otherwise(1))
-
 
 
 val df4 = Seq((1,2)).toDF("x","y")
@@ -52,7 +49,7 @@ val myExpression = "x+y"
 
 df4.withColumn("z",expr(myExpression)).show()
 
-
+<br>
 //import spark.implicits._
 
     val df5 = Seq(
@@ -68,7 +65,7 @@ df4.withColumn("z",expr(myExpression)).show()
 //import org.apache.spark.sql.functions._
 
 df5.withColumn("C5", expr("C2/(C3 + C4)")).show()
-
+<br>
 
 //Spark column string replace when present in other column (row)
 
@@ -90,20 +87,20 @@ val res = df6.withColumn("sentence_without_label", replace($"sentence" , $"label
 res.show()
 
 
-###Drop duplicates
+### Drop duplicates
 
 
 val data = sc.parallelize(List(("Foo",41,"US",3),
 
-("Foo",39,"UK",1),
+	("Foo",39,"UK",1),
 
-("Bar",57,"CA",2),
+	("Bar",57,"CA",2),
 
-("Bar",72,"CA",2),
+	("Bar",72,"CA",2),
 
-("Baz",22,"US",6),
+	("Baz",22,"US",6),
 
-("Baz",36,"US",6))).toDF("x","y","z","count")
+	("Baz",36,"US",6))).toDF("x","y","z","count")
 
 
 
@@ -113,6 +110,8 @@ data.dropDuplicates(Array("x","count")).show()
 val dataset = Seq((0, "hello"), (1, "world")).toDF("id", "text")
 
 val upper: String => String = _.toUpperCase
+
+<br>
 
 //import org.apache.spark.sql.functions.udf
 
@@ -127,7 +126,7 @@ dataFrame.printSchema()
 dataFrame.select("*").where(dataFrame("zip") === "00650").show()
 
 
-###Join Operations in spark
+### Join Operations in spark
 
 
 val emp = Seq((1,"Smith",-1,"2018","10","M",3000),
@@ -246,9 +245,13 @@ df.groupBy("department").agg(sum("salary").as("sum_salary"),avg("salary").as("av
 ## 2. Using SparkSQL
 
 val df = spark.read.option("multiline", "true").json("/user/will/people.json")
+
 df.show()
+
 df.createOrReplaceTempView("people")
+
 val sqlDF = spark.sql("SELECT * FROM people")
+
 sqlDF.show()
 
 
@@ -258,18 +261,28 @@ sqlDF.show()
 ## 3. Generic Load Functions
 
 val empdf1 = spark.read.option("multiline", "true").json("/user/will/people.json")
+
 empdf1.write.parquet("/user/will/employee_101235.parquet")
 
+
 val parquetfiledf = spark.read.parquet("/user/will/employee_101235.parquet")  //Look for Data in  HDFS
+
 parquetfiledf.createOrReplaceTempView("parquetFile")
+
 val namedf=spark.sql("SELECT * FROM parquetFile")
+
 namedf.show()
 
+
 val peopleDF = spark.read.format("json").option("multiline", "true").load("/user/will/people.json")
+
 peopleDF.select("name", "age").write.format("parquet").save("/user/will/namesAndAges.parquet")
 
+
 val peopleDF = spark.read.format("json").option("multiline", "true").format("json").load("/user/will/people.json")
+
 peopleDF.write.partitionBy("name").format("parquet").save("/user/will/nameAndAgesPartitioned.parquet") //or whatever the given name is below
+
 hdfs dfs -cat /user/will/employee_101234.parquet/part-00000-e4605471-4ac7-4621-9ca2-839f24cd08b7-c000.snappy.parquet
 
 
@@ -279,8 +292,11 @@ hdfs dfs -cat /user/will/employee_101234.parquet/part-00000-e4605471-4ac7-4621-9
 
 df.createGlobalTempView("people6")
 
+
 // Global temporary view is tied to a system preserved database `global_temp`
+
 spark.sql("SELECT * FROM global_temp.people6").show()
 
 // Global temporary view is cross-session
+
 spark.newSession().sql("SELECT * FROM global_temp.people6").show()
