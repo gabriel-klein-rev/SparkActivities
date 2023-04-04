@@ -38,6 +38,7 @@ b.collect
 ## 5. Group By
 
 val a = sc.parallelize(1 to 10)
+
 a.groupBy(x=> { if(x%2 ==0) "even" else "odd"}).collect // We can call collect on the created RDD as opposed to assigning it to a variable
 
 
