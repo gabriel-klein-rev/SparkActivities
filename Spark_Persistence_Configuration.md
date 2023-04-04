@@ -15,10 +15,15 @@ Guided steps through RDD storage levels, and Spark Submit configuration template
 ## 1. Persistence.
 
 import org.apache.spark.storage.StorageLevel._
+
 val b = sc.parallelize(List(1,2,3,4,5,6,7,8,2,4,2,1,1,1,1,1))
+
 b.getStorageLevel
+
 b.persist(DISK_ONLY)  
+
 b.unpersist()
+
 b.persist(MEMORY_ONLY) 
 
 
@@ -38,8 +43,11 @@ Once a user application is bundled, it can be launched using the bin/spark-submi
   [application-arguments]
 
 --class: The entry point for your application (e.g. org.apache.spark.examples.SparkPi)
+
 --master: The master URL for the cluster (e.g. spark://23.195.26.187:7077)
+
 --deploy-mode: Whether to deploy your driver on the worker nodes (cluster) or locally as an external client (client) (default: client) †
+
 --conf: Arbitrary Spark configuration property in key=value format. For values that contain spaces wrap “key=value” in quotes (as shown). Multiple configurations should be passed as separate arguments. (e.g. --conf <key>=<value> --conf <key2>=<value2>)
 application-jar: Path to a bundled jar including your application and all dependencies. The URL must be globally visible inside of your cluster, for instance, an hdfs:// path or a file:// path that is present on all nodes.
 application-arguments: Arguments passed to the main method of your main class, if any
