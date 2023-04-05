@@ -17,6 +17,8 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 	wget https://archive.apache.org/dist/kafka/2.6.0/kafka_2.13-2.6.0.tgz
 
 //untar the Kafka archive, and cd to the kafka directory:
+
+
 	tar -xzf kafka_2.13-2.6.0.tgz
 	cd kafka_2.13-2.6.0
 
@@ -31,11 +33,15 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 
 ## To start the kafka broker
 // Open another terminal session. Change the directory to the kafka directory, and start the Kafka broker:  
+
+
 	cd kafka_2.13-2.6.0
 	bin/kafka-server-start.sh config/server.properties
 
 ## To create a topic
 // Open another terminal session and run the kafka-topics command to create a Kafka topic named quickstart-events:  
+
+
 	cd kafka_2.13-2.6.0
 	bin/kafka-topics.sh --create --topic testTopic --bootstrap-server localhost:9092
 
@@ -44,6 +50,8 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 
 ## Start Consumer
 // Open another terminal Start Consumer  
+
+
 	cd kafka_2.13-2.6.0
 	bin/kafka-console-consumer.sh --topic testTopic --from-beginning --bootstrap-server localhost:9092
 
