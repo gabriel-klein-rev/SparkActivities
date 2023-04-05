@@ -1,4 +1,4 @@
-# Spark Scala 00X - Kafka Components
+# Spark Scala 00X - Kafka with Spark Streaming
 
 ### Contributors:
 Gabriel Klein
@@ -126,6 +126,8 @@ Ubuntu:
 
 //Type data in Producer window and the same will be seen in the Spark session
 //Result:
+
+
 	-------------------------------------------
 	Time: 1621792088000 ms
 	-------------------------------------------
