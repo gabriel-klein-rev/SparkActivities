@@ -30,12 +30,12 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 // There will be a lot of messages, and ZooKeeper will be ready in a short time, typically around a second or two.
 
 ## To start the kafka broker
-// Open another terminal session. Change the directory to the kafka directory, and start the Kafka broker:
+// Open another terminal session. Change the directory to the kafka directory, and start the Kafka broker:  
 	cd kafka_2.13-2.6.0
 	bin/kafka-server-start.sh config/server.properties
 
 ## To create a topic
-// Open another terminal session and run the kafka-topics command to create a Kafka topic named quickstart-events:
+// Open another terminal session and run the kafka-topics command to create a Kafka topic named quickstart-events:  
 	cd kafka_2.13-2.6.0
 	bin/kafka-topics.sh --create --topic testTopic --bootstrap-server localhost:9092
 
@@ -43,7 +43,7 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic
 
 ## Start Consumer
-//Open another terminal Start Consumer
+// Open another terminal Start Consumer  
 	cd kafka_2.13-2.6.0
 	bin/kafka-console-consumer.sh --topic testTopic --from-beginning --bootstrap-server localhost:9092
 
@@ -53,5 +53,5 @@ Guided steps through creation of a Kafka cluster runningn on a local server. Inc
 1.	Stop the consumer and producer clients with Ctrl+C
 2.	Stop the Kafka broker with Ctrl+C
 3.	Stop the ZooKeeper server with Ctrl+C
-4.	Run the following command to clean up:
+4.	Run the following command to clean up:  
 	rm -rf /tmp/kafka-logs /tmp/zookeeper
