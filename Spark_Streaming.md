@@ -61,7 +61,7 @@ Open a Spark shell and run the following script:
 	query.awaitTermination()
 
 
-In another terminal, open a port to transfer data to this DStream you have ccreated:
+In another terminal, open a port to transfer data to this unbounded dataframe you have ccreated:
 *Note: You may have to install netcat on your machine
 
 
@@ -71,4 +71,4 @@ In another terminal, open a port to transfer data to this DStream you have ccrea
 
 
 
-Now, when you type data into this terminal, it should appear in the window in which you started your DStream
+Now, when you type data into this terminal, it should appear in your spark shell
