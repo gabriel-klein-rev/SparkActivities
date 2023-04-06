@@ -1,4 +1,4 @@
-# Spark Scala 00X - RDDs and Operations
+# PySpark 00X - RDDs and Operations
 
 ### Contributors:
 Gabriel Klein
@@ -6,11 +6,11 @@ Gabriel Klein
 
 ## Prerequisites
 
-Scala, Spark
+Python, Spark
 
 # How to Complete
 
-Guided steps through RDD creation, transformations, and actions. Should be run through the Spark shell,
+Guided steps through RDD creation, transformations, and actions. Should be run through the Spark shell.
 
 ## 1. RDD Parallelization
 
