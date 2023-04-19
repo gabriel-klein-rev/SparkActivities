@@ -112,3 +112,9 @@ In another terminal, open a port to transfer data to this unbounded dataframe yo
 
 
 Now, when you type data into this terminal, it should appear in your spark shell
+
+## Resources
+
+https://spark.apache.org/docs/latest/streaming-programming-guide.html
+
+https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
